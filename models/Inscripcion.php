@@ -29,4 +29,19 @@ class Inscripcion extends ActiveRecord {
         }
         return self::$errores;
     }
+
+    public static function getLatest($limit = 5) {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY fecha_inscripcion DESC LIMIT ?";
+        $stmt = self::$db->prepare($query);
+        $stmt->bind_param("i", $limit);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        $inscripciones = [];
+        while ($row = $result->fetch_assoc()) {
+            $inscripciones[] = static::crearObjeto($row);
+        }
+        
+        return $inscripciones;
+    }
 }

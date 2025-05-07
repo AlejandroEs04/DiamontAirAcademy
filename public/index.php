@@ -2,7 +2,10 @@
 
 use Controllers\AuthController;
 use Controllers\PaginasController;
+use Controllers\EncuestaController;
+use Controllers\PreguntaController;
 use Controllers\AdminController;
+use Controllers\AlumnoController;
 use MVC\Router;
 
 require_once __DIR__ . "../../includes/app.php";
@@ -27,9 +30,33 @@ $router->get('/admin/usuarios/delete', [AdminController::class, 'deleteUser']);
 
 $router->get('/admin/clases', [AdminController::class, 'clases']);
 $router->get('/admin/clases/create', [AdminController::class, 'createClase']);
-$router->post('/admin/clases/create', [AdminController::class, 'createClase']);
+$router->post('/admin/clases/create', [AdminController::class, 'guardarClase']);
 $router->get('/admin/clases/edit', [AdminController::class, 'editClase']);
-$router->post('/admin/clases/edit', [AdminController::class, 'editClase']);
+$router->post('/admin/clases/edit', [AdminController::class, 'guardarClase']);
 $router->get('/admin/clases/delete', [AdminController::class, 'deleteClase']);
+
+$router->post('/admin/schedules/edit', [AdminController::class, 'editHorario']);
+$router->get('/admin/schedules/edit', [AdminController::class, 'editHorario']);
+$router->post('/admin/schedules/create', [AdminController::class, 'crearHorario']);
+$router->get('/admin/schedules/delete', [AdminController::class, 'deleteHorario']);
+
+$router->post('/admin/inscripciones/crear', [AdminController::class, 'crearInscripcion']);
+$router->post('/admin/inscripciones/actualizar', [AdminController::class, 'actualizarInscripcion']);
+$router->post('/admin/inscripciones/eliminar', [AdminController::class, 'eliminarInscripcion']);
+
+$router->get('/admin/encuestas', [EncuestaController::class, 'index']);
+$router->get('/admin/encuestas/crear', [EncuestaController::class, 'crear']);
+$router->post('/admin/encuestas/crear', [EncuestaController::class, 'crear']);
+$router->get('/admin/encuestas/editar', [EncuestaController::class, 'editar']);
+$router->post('/admin/encuestas/eliminar', [EncuestaController::class, 'eliminar']);
+
+$router->get('/admin/preguntas/crear', [PreguntaController::class, 'crear']);
+$router->post('/admin/preguntas/crear', [PreguntaController::class, 'crear']);
+$router->get('/admin/preguntas/editar', [PreguntaController::class, 'editar']);
+$router->post('/admin/preguntas/eliminar', [PreguntaController::class, 'eliminar']);
+$router->get('/admin/preguntas/opciones', [PreguntaController::class, 'opciones']);
+$router->post('/admin/preguntas/opciones', [PreguntaController::class, 'opciones']);
+
+$router->get('/alumno', [AlumnoController::class, 'index']);
 
 $router->comprobarRutas();

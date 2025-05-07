@@ -33,4 +33,28 @@ class Clase extends ActiveRecord {
         }
         return self::$errores;
     }
+
+    // En models/Clase.php
+public static function count($column = null, $value = null) {
+    $query = "SELECT COUNT(*) as total FROM " . static::$tabla;
+    
+    // Si se especifica columna y valor para filtrar
+    if ($column && $value) {
+        $query .= " WHERE $column = ?";
+        $stmt = self::$db->prepare($query);
+        
+        // Determinar el tipo de parámetro
+        $type = is_int($value) ? 'i' : 's';
+        $stmt->bind_param($type, $value);
+        
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+    } else {
+        // Consulta sin filtros
+        $result = self::$db->query($query);
+    }
+    
+    return $result->fetch_assoc()['total'];
+}
 }

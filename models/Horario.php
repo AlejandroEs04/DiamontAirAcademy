@@ -18,6 +18,9 @@ class Horario extends ActiveRecord {
     public $capacidad_maxima;
     public $activo;
     private $alumno_relacionado;
+    public $clase = null;
+    public $modalidad = null;
+    public $inscripcion_id = null;
 
     public function __construct($args = []) {
         $this->id = $args['id'] ?? null;
@@ -30,6 +33,12 @@ class Horario extends ActiveRecord {
         $this->fecha_fin = $args['fecha_fin'] ?? null;
         $this->capacidad_maxima = $args['capacidad_maxima'] ?? 15;
         $this->activo = $args['activo'] ?? 1;
+    }
+
+    public function cargarRelaciones() {
+        $this->clase = Clase::find($this->clase_id);
+        $this->modalidad = Modalidad::find($this->modalidad_id);
+        return $this;
     }
 
     public function validar() {
@@ -46,5 +55,54 @@ class Horario extends ActiveRecord {
             self::$errores[] = "Debe especificar fecha de inicio";
         }
         return self::$errores;
+    }
+
+    public static function getUpcomingClasses($limit = 3) {
+        $query = "SELECT * FROM " . static::$tabla . " 
+                  WHERE fecha_inicio >= CURDATE() 
+                  ORDER BY fecha_inicio ASC, hora_inicio ASC 
+                  LIMIT ?";
+        $stmt = self::$db->prepare($query);
+        $stmt->bind_param("i", $limit);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        $horarios = [];
+        while ($row = $result->fetch_assoc()) {
+            $horarios[] = static::crearObjeto($row);
+        }
+        
+        return $horarios;
+    }
+
+    public static function count($conditions = []) {
+        $query = "SELECT COUNT(*) as total FROM " . static::$tabla;
+        $params = [];
+        $types = '';
+        
+        // Si hay condiciones
+        if (!empty($conditions)) {
+            $whereParts = [];
+            foreach ($conditions as $column => $value) {
+                $whereParts[] = "$column = ?";
+                $params[] = $value;
+                $types .= is_int($value) ? 'i' : 's';
+            }
+            $query .= " WHERE " . implode(' AND ', $whereParts);
+        }
+        
+        $stmt = self::$db->prepare($query);
+        
+        // Bind parameters si hay
+        if (!empty($params)) {
+            $stmt->bind_param($types, ...$params);
+        }
+        
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $total = $result->fetch_assoc()['total'];
+        $stmt->close();
+        
+        return $total;
     }
 }

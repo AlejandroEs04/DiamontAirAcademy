@@ -135,6 +135,20 @@ class ActiveRecord {
         return $resultado;
     }
 
+    public static function deleteWhere($column, $value) {
+        $query = "DELETE FROM " . static::$tabla . " WHERE {$column} = ?";
+        $stmt = self::$db->prepare($query);
+        
+        // Determinar el tipo de parámetro
+        $type = is_int($value) ? 'i' : (is_float($value) ? 'd' : 's');
+        $stmt->bind_param($type, $value);
+        
+        $result = $stmt->execute();
+        $stmt->close();
+        
+        return $result;
+    }
+
     // Busca una propiedad por su id
     /**
      * @template T of ActiveRecord
@@ -171,6 +185,49 @@ class ActiveRecord {
         $resultado = self::consultarSQL($query);
 
         return $resultado;
+    }
+
+    /**
+     * @template T of ActiveRecord
+     * @param int $id
+     * @return T|null
+     */
+    public static function whereManyCondition($conditions) {
+        // Si recibe parámetros antiguos (field, value) para compatibilidad
+        if (!is_array($conditions)) {
+            $conditions = [$conditions => func_get_arg(1)];
+        }
+    
+        $whereParts = [];
+        $values = [];
+        $types = '';
+    
+        foreach ($conditions as $field => $value) {
+            $whereParts[] = "{$field} = ?";
+            $values[] = $value;
+            $types .= is_int($value) ? 'i' : 's'; // 'i' para integer, 's' para string
+        }
+    
+        $query = "SELECT * FROM " . static::$tabla . " WHERE " . implode(' AND ', $whereParts);
+        $stmt = self::$db->prepare($query);
+    
+        if (!$stmt) {
+            throw new \Exception("Error preparing query: " . self::$db->error);
+        }
+    
+        // Bind parameters dinámicamente
+        $stmt->bind_param($types, ...$values);
+        $stmt->execute();
+    
+        $result = $stmt->get_result();
+        $objects = [];
+    
+        while ($row = $result->fetch_assoc()) {
+            $objects[] = static::crearObjeto($row);
+        }
+    
+        $stmt->close();
+        return $objects;
     }
 
     /**

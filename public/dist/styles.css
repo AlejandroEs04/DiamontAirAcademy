@@ -32,44 +32,44 @@ body {
 
 nav {
     background-color: #7469B6;
-    padding: 10px;
     text-align: center;
     margin-top: 20px;
     font-size: 22px;
 }
 
 nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+    }
 
-nav ul li {
-    margin-left: 20px;
-}
+    nav ul li {
+        margin-left: 20px;
+    }
 
-nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-}
+    nav ul li a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+    }
 
-nav ul li a:hover {
-    color: #ff88d9;
-}
+    nav ul li a:hover {
+        color: #ff88d9;
+    }
 
-.nav {
-    display: flex;
-    list-style-type: none;
-    margin-left: auto;
-}
+    .nav {
+        display: flex;
+        list-style-type: none;
+        margin-left: auto;
+    }
 
-.nav li {
-    margin: 0 10px;
-}
+    .nav li {
+        margin: 0 10px;
+    }
 
 /* ===== Estilos para Títulos ===== */
 h1 {
@@ -87,25 +87,8 @@ h2 {
     margin: 0;
 }
 
-/* ===== Estilos para Botones ===== */
 button {
-    padding: 10px 20px;
-    font-size: 19px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    background-color: #c743b1d6;
-    color: #ffffff;
-    font-family: 'Outfit', sans-serif;
-}
-
-button:hover {
-    background-color: #91227fd6;
-}
-
-button:active {
-    transform: scale(0.95);
+    padding: 10px;
 }
 
 .btn {
@@ -146,13 +129,6 @@ button:active {
     font-size: 20px;
 }
 
-/* ===== Estilos para Formularios ===== */
-form {
-    padding: 3px;
-    margin: 30px;
-    font-size: 17px;
-}
-
 form label {
     padding: 3px;
     display: block;
@@ -161,7 +137,7 @@ form label {
     font-size: 1.2rem;
 }
 
-form input, form select {
+form input, form select, form textarea {
     margin-bottom: 15px;
     font-size: 16px;
     font-family: 'Outfit', sans-serif;
@@ -259,13 +235,6 @@ table a:hover {
     min-height: 100px;
     height: auto;
     overflow: hidden;
-}
-
-.container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 1rem auto;
-    margin-bottom: 2rem;
 }
 
 /* ===== Estilos para Menú Box ===== */

@@ -53,4 +53,19 @@ class Usuario extends ActiveRecord {
     public function verificarPassword($contrasena) {
         return password_verify($contrasena, $this->contrasena);
     }
+
+    public static function count($column = null, $value = null) {
+        $query = "SELECT COUNT(*) as total FROM " . static::$tabla;
+        if ($column && $value) {
+            $query .= " WHERE $column = ?";
+            $stmt = self::$db->prepare($query);
+            $stmt->bind_param("s", $value);
+            $stmt->execute();
+            $result = $stmt->get_result();
+        } else {
+            $result = self::$db->query($query);
+        }
+        
+        return $result->fetch_assoc()['total'];
+    }
 }
