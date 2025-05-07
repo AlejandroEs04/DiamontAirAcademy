@@ -1,0 +1,854 @@
+/* ===== Estilos Generales ===== */
+* {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(to left, #f8eefc, #e1def5);
+}
+
+/* ===== Estilos de Encabezado/Navegación ===== */
+.cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    height: 60px;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    margin-top: 20px;
+}
+
+#logo {
+    max-width: 50px;
+    margin-right: 10px;
+}
+
+nav {
+    background-color: #7469B6;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #ff88d9;
+}
+
+.nav {
+    display: flex;
+    list-style-type: none;
+    margin-left: auto;
+}
+
+.nav li {
+    margin: 0 10px;
+}
+
+/* ===== Estilos para Títulos ===== */
+h1 {
+    color: #AD88C6;
+    font-family: "Madimi One", sans-serif;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-family: "Madimi One", sans-serif;
+    text-align: center;
+    color: #292929;
+    font-size: 40px;
+    margin: 0;
+}
+
+/* ===== Estilos para Botones ===== */
+button {
+    padding: 10px 20px;
+    font-size: 19px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    background-color: #c743b1d6;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+}
+
+button:hover {
+    background-color: #91227fd6;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.btn {
+    font-family: 'Outfit', sans-serif;
+    background-color: #3e3280;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 5px 10px;
+    border-style: none;
+    margin-bottom: 12px;
+    text-decoration: none;
+    transition: all ease-in-out 0.2s;
+}
+
+.btn-danger {
+    background-color: rgb(255, 0, 0) !important;
+}
+
+.btn-danger:hover {
+    background-color: rgb(204, 0, 0) !important;
+}
+
+.submit-button {
+    background-color: #9486e3;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 8px 12px;
+    font-size: 20px;
+}
+
+.submit-button:hover {
+    background-color: #6b61c9;
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-size: 20px;
+}
+
+/* ===== Estilos para Formularios ===== */
+form {
+    padding: 3px;
+    margin: 30px;
+    font-size: 17px;
+}
+
+form label {
+    padding: 3px;
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+form input, form select {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-family: 'Outfit', sans-serif;
+    width: 100%;
+    padding: 8px 18px;
+    border-radius: 10px;
+    border: 0.5px solid #92929262;
+}
+
+form p {
+    margin-top: 150px;
+}
+
+textarea {
+    width: 90%;
+    height: 150px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+}
+
+select {
+    width: 200px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Outfit', sans-serif;
+}
+
+select option {
+    font-size: 14px;
+    background-color: #fff;
+    color: #333;
+    padding: 6px 10px;
+    font-family: 'Outfit', sans-serif;
+}
+
+select option:checked {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* ===== Estilos para Tablas ===== */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+th {
+    background-color: #e4d4f4;
+    color: #7469B6;
+    font-weight: bold;
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-decoration: none;
+}
+
+tr:nth-child(even) {
+    background-color: #fbf9ff;
+}
+
+tr:hover {
+    background-color: #c7c4e4;
+}
+
+table a {
+    text-decoration: none;
+    color: #333;
+}
+
+table a:hover {
+    color: #ff3dc2;
+}
+
+.iframe-container {
+    max-width: 800px;
+    margin: 0px 0;
+    background-color: none;
+    padding: 0px 20px 25px 0px;
+    border-radius: 10px;
+    box-shadow: none;
+    text-align: center;
+    width: 100%;
+    min-height: 100px;
+    height: auto;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 1rem auto;
+    margin-bottom: 2rem;
+}
+
+/* ===== Estilos para Menú Box ===== */
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+    box-shadow: none;
+}
+
+.menu-box {
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    max-width: 200px;
+    width: 100%;
+}
+
+.menu-box a {
+    text-decoration: none;
+}
+
+.menu-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+.menu-box button {
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    font-size: 20px;
+}
+
+/* ===== Estilos para Iframes ===== */
+iframe {
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 100%;
+    border: none;
+    display: block;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    height: auto;
+    overflow: hidden;
+}
+
+/* ===== Estilos Específicos para Páginas ===== */
+
+/* Estilo para página de inicio alumno */
+body.inicio-alumno {
+    background: linear-gradient(to left, #ffe8fd, #ffa4f9);
+}
+
+#inicio-encuestas {
+    background: #ffeefc;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 3px 20px 25px 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.inicio-alumno h1 {
+    color: #b957b9;
+}
+
+.inicio-alumno h2 {
+    color: #E1AFD1;
+}
+
+.inicio-alumno .menu-box {
+    background-color: #fbc5ff;
+}
+
+.inicio-alumno .menu-box button {
+    background-color: #c743b1d6;
+}
+
+.inicio-alumno .menu-box button:hover {
+    background-color: #a5236f;
+}
+
+/* Estilo para página principal */
+body.main-style {
+    background: linear-gradient(to left, #f8eefc, #e1def5);
+}
+
+.main-style h1 {
+    color: #AD88C6;
+}
+
+.main-style button {
+    background-color: #7469B6;
+}
+
+.main-style button:hover {
+    background-color: #3e3280;
+}
+
+/* Estilo para página de administrador */
+body.admin-style {
+    background: linear-gradient(to left, #eef6fc, #9dbaeb);
+}
+
+.admin-style h1 {
+    color: #8894c6;
+}
+
+.admin-style .menu-box {
+    background-color: #9dbaeb;
+}
+
+.admin-style .menu-box button {
+    background-color: #407ee9;
+}
+
+.admin-style .menu-box button:hover {
+    background-color: #506b93;
+}
+
+.admin-style button {
+    background-color: #7469B6;
+    font-size: 17px;
+}
+
+.admin-style button:hover {
+    background-color: #506b93;
+}
+
+/* ===== Estilos para Secciones Específicas ===== */
+#nosotros, #eventos, #contacto {
+    text-align: center;
+}
+
+#nosotros img, #eventos img, #contacto img {
+    width: 60px;
+    align-items: center;
+    margin: 0%;
+    margin-bottom: 0%;
+}
+
+#inicio, #inicio div, #contactanos, #contactanos div {
+    background-color: transparent;
+    box-shadow: none;
+    max-width: max-content;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#inicio h1, #inicio p, #contactanos h1, #contactanos p {
+    text-align: left;
+    margin: 2px;
+}
+
+#inicio h1 {
+    font-size: 80px;
+}
+
+#inicio p {
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+#inicio img {
+    width: 350px;
+    margin: 0;
+    position: relative;
+}
+
+#contenedor {
+    display: flex;
+    width: max-content;
+    align-items: center;
+}
+
+#contenedor #texto {
+    width: 70%;
+}
+
+#texto h1 {
+    color: #7469B6;
+}
+
+#texto p {
+    color: #3e3280;
+}
+
+#bailarina {
+    margin: 0;
+    padding-bottom: 0;
+    width: 40%;
+    position: relative;
+}
+
+#texto {
+    text-align: left;
+}
+
+#texto button {
+    font-size: 20px;
+}
+
+#contactanos h1 {
+    font-size: 50px;
+}
+
+#contactanos img {
+    width: 400px;
+    margin: 0;
+    position: relative;
+}
+
+/* ===== Estilos para Redes Sociales ===== */
+.iconos-redes-sociales {
+    display: flex;
+    justify-content: center;
+    box-shadow: none;
+}
+
+.iconos-redes-sociales a {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6px;
+    border: 2px solid white;
+    border-radius: 50%;
+    transition: all 0.2s ease-in;
+}
+
+.iconos-redes-sociales a i {
+    color: #ff88d9;
+    font-size: 1.5rem;
+    transition: all 0.2s ease-in;
+}
+
+.iconos-redes-sociales a:hover {
+    background-color: white;
+    border: 2px solid #7469B6;
+}
+
+.iconos-redes-sociales a:hover i {
+    color: #7469B6;
+}
+
+/* ===== Estilos para Eventos ===== */
+.imagenes-eventos {
+    background-color: transparent;
+    box-shadow: none;
+    max-width: max-content;
+    padding-bottom: 0;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.imagenes-eventos img {
+    width: 300px;
+}
+
+#clases-eventos > div {
+    display: inline-block;
+    vertical-align: middle;
+    width: 38%;
+    margin-right: 2%;
+}
+
+#clases-eventos > div:last-child {
+    margin-right: 0;
+}
+
+.imagenes-eventos img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5%;
+}
+
+.clases-eventos {
+    width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 1rem;
+    border-radius: 2rem;
+}
+
+.clases-eventos .info-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.clases-eventos p {
+    text-align: center;
+}
+
+.info-container .lista-precios {
+    width: 55%;
+}
+
+.info-container .imagenes-eventos {
+    width: 45%;
+}
+
+.info-container .imagenes-eventos img {
+    width: 100%;
+}
+
+.info-container .lista-precios p,
+.info-container .lista-precios h2 {
+    text-align: start;
+}
+
+.info-container .lista-precios h2 {
+    color: #7469B6;
+}
+
+/* ===== Estilos para Texto ===== */
+p {
+    font-weight: 400;
+    font-size: 20px;
+    color: #333;
+}
+
+.lista-precios p {
+    color: #292929;
+}
+
+/* ===== Estilos para Banner ===== */
+.banner {
+    display: flex;
+}
+
+.banner .info {
+    width: 60%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.banner .img-container {
+    width: 40%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.banner .info h1 {
+    font-size: 80px;
+}
+
+.banner div img {
+    height: 500px;
+}
+
+.banner .info {
+    text-align: start;
+}
+
+/* ===== Estilos para Formularios ===== */
+.forms {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container p {
+    margin: 0;
+}
+
+/* ===== Clases Utilitarias ===== */
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.subtitle {
+    color: #7469B6;
+    margin-top: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.text-base {
+    font-size: 1.2rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.alert {
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+/* ===== Estilos para Registros ===== */
+.registro-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.form-column {
+    flex: 1;
+    margin-right: 10px;
+    width: 100%;
+}
+
+.form-column {
+    background-color: transparent;
+    box-shadow: none;
+    max-width: max-content;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#tabla {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+#tabla div {
+    box-shadow: none;
+}
+
+/* ===== Estilos para Disposición de Tablas ===== */
+.container.tablas {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.estudiantes, .clases {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.estudiantes {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.clases {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* ===== Estilos para Dispositivos Móviles ===== */
+@media (max-width: 767px) {
+    .iframes-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    iframe {
+        width: 98%;
+        margin: 10px auto;
+    }
+
+    .toggle-nav-button {
+        display: block;
+    }
+
+    .nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: rgb(244, 246, 248);
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav li {
+        margin: 10px 0;
+    }
+
+    .nav.show {
+        display: flex;
+    }
+
+    .banner {
+        flex-direction: column;
+    }
+
+    .banner .info, .banner .img-container {
+        width: 100%;
+    }
+
+    .banner .info h1 {
+        font-size: 50px;
+    }
+
+    .banner div img {
+        height: auto;
+        width: 100%;
+    }
+
+    #clases-eventos > div {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .clases-eventos {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .clases-eventos .info-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .info-container .lista-precios, 
+    .info-container .imagenes-eventos {
+        width: 100%;
+    }
+
+    .container.tablas {
+        flex-direction: column;
+    }
+
+    .estudiantes, .clases {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+/* ===== Estilos para Grid de Botones ===== */
+.button-container.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 1rem;
+}
+
+.button-container.grid .menu-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-container.grid .menu-box img {
+    width: 100%;
+}
+
+.button-container.grid .menu-box a button {
+    margin-top: 0.5rem;
+    width: 100%;
+}
