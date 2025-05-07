@@ -17,6 +17,7 @@ class Horario extends ActiveRecord {
     public $fecha_fin;
     public $capacidad_maxima;
     public $activo;
+    private $alumno_relacionado;
 
     public function __construct($args = []) {
         $this->id = $args['id'] ?? null;

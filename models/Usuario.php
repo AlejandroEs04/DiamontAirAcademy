@@ -1,6 +1,10 @@
 <?php 
 namespace Model;
 
+/**
+ * @method static Usuario|null find(int $id)
+ * @method static Usuario|null where(string $field, mixed $value)
+ */
 class Usuario extends ActiveRecord {
     protected static $tabla = 'usuarios';
     protected static $columnasDB = 
@@ -29,9 +33,6 @@ class Usuario extends ActiveRecord {
     public function validar() {
         if(!$this->email) {
             self::$errores[] = "El email es obligatorio";
-        }
-        if(!$this->contrasena) {
-            self::$errores[] = "La contraseña es obligatoria";
         }
         if(!$this->nombre) {
             self::$errores[] = "El nombre es obligatorio";

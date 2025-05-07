@@ -4,7 +4,7 @@
             <div>
                 <h1>Diamonds Air<br>Academy</h1>
                 <p>El Arte del Baile del Aire.</p>
-                <a href="/login.php"><button>Comenzar</button></a>
+                <a href="/login"><button>Comenzar</button></a>
             </div>
         </div>
         <div class="bailarina img-container">
