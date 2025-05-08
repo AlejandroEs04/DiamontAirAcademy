@@ -17,10 +17,10 @@ class Horario extends ActiveRecord {
     public $fecha_fin;
     public $capacidad_maxima;
     public $activo;
-    private $alumno_relacionado;
-    public $clase = null;
-    public $modalidad = null;
-    public $inscripcion_id = null;
+    // private $alumno_relacionado;
+    // public $clase = null;
+    // public $modalidad = null;
+    // public $inscripcion_id = null;
 
     public function __construct($args = []) {
         $this->id = $args['id'] ?? null;
@@ -35,11 +35,11 @@ class Horario extends ActiveRecord {
         $this->activo = $args['activo'] ?? 1;
     }
 
-    public function cargarRelaciones() {
-        $this->clase = Clase::find($this->clase_id);
-        $this->modalidad = Modalidad::find($this->modalidad_id);
-        return $this;
-    }
+    // public function cargarRelaciones() {
+    //     $this->clase = Clase::find($this->clase_id);
+    //     $this->modalidad = Modalidad::find($this->modalidad_id);
+    //     return $this;
+    // }
 
     public function validar() {
         if(!$this->clase_id) {

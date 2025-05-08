@@ -2,7 +2,7 @@
     use Model\Usuario;
 ?>
 
-<h1 class="text-2xl font-bold mb-6">Editar Horario</h1>
+<h1>Gestionar Horario</h1>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <!-- Sección para editar horario -->
@@ -49,7 +49,6 @@
 
     <div class="bg-white p-6 rounded-lg shadow">
         <h2 class="text-xl font-semibold mb-4">Inscripciones (<?php echo count($inscripciones); ?>)</h2>
-        
         <div class="mb-6 p-4 bg-gray-50 rounded-lg">
             <form action="/admin/inscripciones/crear" method="POST">
                 <input type="hidden" name="horario_id" value="<?php echo htmlspecialchars($schedule->id ?? ''); ?>">
@@ -124,10 +123,10 @@
                                         </select>
                                     </form>
                                     
-                                    <form action="/admin/inscripciones/eliminar" method="POST" class="inline ml-2">
+                                    <form action="/admin/inscripciones/eliminar" method="POST" class="inline">
                                         <input type="hidden" name="id" value="<?php echo $inscripcion->id; ?>">
                                         <button type="submit" onclick="return confirm('¿Eliminar esta inscripción?')" 
-                                                class="text-red-500 hover:text-red-700 text-sm">
+                                                class="text-red-500 hover:text-red-700 p-0 m-0">
                                             Eliminar
                                         </button>
                                     </form>

@@ -51,6 +51,11 @@ class PreguntaController {
         $errores = [];
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!$pregunta) {
+                header("Location: /");
+                exit;
+            }
+            
             $pregunta->sincronizar($_POST);
             $errores = $pregunta->validar();
 

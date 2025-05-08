@@ -23,6 +23,8 @@ class ActiveRecord {
             // Creando un nuevo registro
             $this->crear();
         }
+
+        return true;
     }
 
     public function crear() {
@@ -149,11 +151,11 @@ class ActiveRecord {
         return $result;
     }
 
-    // Busca una propiedad por su id
     /**
      * @template T of ActiveRecord
      * @param int $id
-     * @return T|null
+     * @return ($id is int ? T|null : null)
+     * @phpstan-return T|null
      */
     public static function find($id) {
         $query = "SELECT * FROM " . static::$tabla . " WHERE id = " . $id;
@@ -175,9 +177,8 @@ class ActiveRecord {
     }
 
     /**
-     * @template T of ActiveRecord
-     * @param int $id
-     * @return T|null
+     * @return static[]
+     * @phpstan-return array<static>
      */
     public static function whereMany($field, $id) {
         $query = "SELECT * FROM " . static::$tabla . " WHERE $field = '$id'";
@@ -188,9 +189,8 @@ class ActiveRecord {
     }
 
     /**
-     * @template T of ActiveRecord
-     * @param int $id
-     * @return T|null
+     * @return static[]
+     * @phpstan-return array<static>
      */
     public static function whereManyCondition($conditions) {
         // Si recibe parámetros antiguos (field, value) para compatibilidad

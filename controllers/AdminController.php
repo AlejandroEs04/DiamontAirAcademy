@@ -157,22 +157,10 @@ class AdminController {
             $errores = $horario->validar();
             
             if (empty($errores)) {
-                $resultado = $horario->guardar();
-                if ($resultado) {
-                    header('Location: /admin/clases/edit?id=' . $horario->clase_id);
-                    exit;
-                }
+                $horario->guardar();
             }
             
-            // Redirigir de vuelta con errores
-            $clase = Clase::find($horario->clase_id);
-            $router->render('admin/clases/edit', [
-                'clase' => $clase,
-                'errores' => $errores,
-                'categorias' => CategoriaClase::all(),
-                'modalidades' => Modalidad::all(),
-                'schedules' => Horario::where('clase_id', $clase->id)
-            ]);
+            header('Location: /admin/clases');
         }
     }
 
@@ -244,7 +232,7 @@ class AdminController {
             
             // Redirigir de vuelta a la página de edición
             $horario_id = $inscripcion ? $inscripcion->horario_id : null;
-            header('Location: ' . ($horario_id ? '/admin/schedules/edit?id=' . $horario_id : '/admin/clases'));
+            header('Location: /admin/schedules/edit?id='.$horario_id);
             exit;
         }
     }
@@ -259,7 +247,7 @@ class AdminController {
                 $inscripcion->eliminar();
             }
             
-            header('Location: ' . ($horario_id ? '/admin/horarios/editar?id=' . $horario_id : '/admin/clases'));
+            header('Location: /admin/schedules/edit?id='.$horario_id);
             exit;
         }
     }
@@ -277,22 +265,16 @@ class AdminController {
             $errores = $inscripcion->validar();
             
             if (empty($errores)) {
-                $resultado = $inscripcion->guardar();
-                if ($resultado) {
-                    header('Location: /admin/horarios/editar?id=' . $inscripcion->horario_id);
-                    exit;
-                }
+                $inscripcion->guardar();
             }
             
-            // Si hay errores, mostrar el formulario nuevamente
-            $schedule = Horario::find($inscripcion->horario_id);
-            $inscripciones = Inscripcion::whereMany("horario_id", $inscripcion->horario_id);
-            
-            $router->render('admin/clases/edit', [
-                'schedule' => $schedule,
-                'inscripciones' => $inscripciones,
-                'errores' => $errores
-            ]);
+            header('Location: /admin/schedules/edit?id='.$_POST['horario_id']);
         }
+    }
+
+    public static function asistencia(Router $router) {
+        $router->render('admin/qrcode', [
+
+        ]);
     }
 }

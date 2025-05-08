@@ -6,6 +6,7 @@ use Controllers\EncuestaController;
 use Controllers\PreguntaController;
 use Controllers\AdminController;
 use Controllers\AlumnoController;
+use Controllers\AsistenciaController;
 use MVC\Router;
 
 require_once __DIR__ . "../../includes/app.php";
@@ -19,6 +20,7 @@ $router->get('/eventos', [PaginasController::class, 'eventos']);
 
 $router->get('/login', [AuthController::class, 'login']);
 $router->post('/login', [AuthController::class, 'login']);
+$router->post('/logout', [AuthController::class, 'logout']);
 
 $router->get('/admin', [AdminController::class, 'index']);
 $router->get('/admin/usuarios', [AdminController::class, 'usuarios']);
@@ -57,6 +59,13 @@ $router->post('/admin/preguntas/eliminar', [PreguntaController::class, 'eliminar
 $router->get('/admin/preguntas/opciones', [PreguntaController::class, 'opciones']);
 $router->post('/admin/preguntas/opciones', [PreguntaController::class, 'opciones']);
 
+$router->get('/admin/qr', [AdminController::class, 'asistencia']);
+
 $router->get('/alumno', [AlumnoController::class, 'index']);
+$router->post('/asistencia/registrar', [AsistenciaController::class, 'registrarAsistencia']);
+
+$router->get('/encuestas', [EncuestaController::class, 'listar']);
+$router->get('/encuestas/contestar', [EncuestaController::class, 'contestar']);
+$router->post('/encuestas/guardar-respuestas', [EncuestaController::class, 'guardarRespuestas']);
 
 $router->comprobarRutas();

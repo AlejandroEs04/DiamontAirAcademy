@@ -8,9 +8,41 @@ class Pregunta extends ActiveRecord {
     public $id;
     public $encuesta_id;
     public $texto_pregunta;
-    public $tipo_respuesta; // texto, opcion_multiple, escala, fecha
+    public $tipo_respuesta; 
     public $orden;
     public $requerida;
+    public $opciones = []; 
+    
+    public static function whereManyCondition($conditions, $orderBy = '') {
+        $whereParts = [];
+        $values = [];
+        
+        foreach ($conditions as $field => $value) {
+            $whereParts[] = "$field = ?";
+            $values[] = $value;
+        }
+        
+        $query = "SELECT * FROM " . static::$tabla;
+        $query .= " WHERE " . implode(' AND ', $whereParts);
+        
+        if ($orderBy) {
+            $query .= " ORDER BY " . $orderBy;
+        }
+        
+        $stmt = self::$db->prepare($query);
+        $types = str_repeat('s', count($values));
+        $stmt->bind_param($types, ...$values);
+        $stmt->execute();
+        
+        $result = $stmt->get_result();
+        $objects = [];
+        
+        while ($row = $result->fetch_assoc()) {
+            $objects[] = static::crearObjeto($row);
+        }
+        
+        return $objects;
+    }
 
     public function __construct($args = []) {
         $this->id = $args['id'] ?? null;

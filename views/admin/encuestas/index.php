@@ -1,22 +1,22 @@
-<div class="container mx-auto px-4 py-8">
-    <div class="flex justify-between items-center mb-6">
-        <h1 class="text-2xl font-bold">Encuestas</h1>
-        <a href="/admin/encuestas/crear" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+<div class="container mx-auto p-0">
+    <div>
+        <h1>Encuestas</h1>
+        <a href="/admin/encuestas/crear" class="btn bg-indigo-500 hover:bg-indigo-600">
             Nueva Encuesta
         </a>
     </div>
 
-    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-        <table class="min-w-full">
-            <thead class="bg-gray-100">
+    <div>
+        <table class="bg-white min-w-full mt-1">
+            <thead>
                 <tr>
-                    <th class="py-3 px-4 text-left">Título</th>
-                    <th class="py-3 px-4 text-left">Estado</th>
-                    <th class="py-3 px-4 text-left">Fecha</th>
-                    <th class="py-3 px-4 text-left">Acciones</th>
+                    <th>Título</th>
+                    <th>Estado</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-gray-200">
+            <tbody>
                 <?php foreach($encuestas as $encuesta): ?>
                 <tr class="hover:bg-gray-50">
                     <td class="py-3 px-4"><?php echo htmlspecialchars($encuesta->titulo); ?></td>

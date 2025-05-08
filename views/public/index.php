@@ -1,10 +1,10 @@
-<div>
-    <div class="banner">
+<div class="flex justify-center w-full">
+    <div class="banner w-full">
         <div class="info">
             <div>
                 <h1>Diamonds Air<br>Academy</h1>
-                <p>El Arte del Baile del Aire.</p>
-                <a href="/login"><button>Comenzar</button></a>
+                <p class="mb-2">El Arte del Baile del Aire.</p>
+                <a href="/login" class="btn bg-indigo-500 hover:bg-indigo-600 text-xl mt-1">Comenzar</a>
             </div>
         </div>
         <div class="bailarina img-container">

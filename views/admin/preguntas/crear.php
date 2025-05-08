@@ -1,10 +1,10 @@
-<div class="container mx-auto px-4 py-8">
-    <div class="flex items-center mb-6">
+<div class="container mx-auto p-0">
+    <div class="flex flex-col mb-1">
         <a href="/admin/encuestas/editar?id=<?php echo $pregunta->encuesta_id; ?>" 
-           class="text-blue-500 hover:text-blue-700 mr-4">
+           class="text-indigo-500 hover:text-indigo-700 mr-4">
             <i class='bx bx-arrow-back'></i> Volver
         </a>
-        <h1 class="text-2xl font-bold">Agregar Nueva Pregunta</h1>
+        <h1>Agregar Nueva Pregunta</h1>
     </div>
 
     <form method="POST" class="bg-white shadow-md rounded-lg p-6">
@@ -23,14 +23,14 @@
             <label class="block text-gray-700 font-medium mb-2">Tipo de respuesta *</label>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <?php foreach($tipos_pregunta as $valor => $texto): ?>
-                <label class="flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
-                    <input type="radio" name="tipo_respuesta" value="<?php echo $valor; ?>" 
-                           <?php echo ($pregunta->tipo_respuesta ?? 'texto') === $valor ? 'checked' : ''; ?>
-                           class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300">
-                    <span class="ml-3 block text-sm font-medium text-gray-700">
-                        <?php echo $texto; ?>
-                    </span>
-                </label>
+                    <label class="flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                        <input type="radio" name="tipo_respuesta" value="<?php echo $valor; ?>" 
+                            <?php echo ($pregunta->tipo_respuesta ?? 'texto') === $valor ? 'checked' : ''; ?>
+                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 m-0">
+                        <span class="ml-3 block text-sm font-medium text-gray-700">
+                            <?php echo $texto; ?>
+                        </span>
+                    </label>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -49,7 +49,7 @@
             <div class="flex items-center">
                 <input type="checkbox" id="requerida" name="requerida" value="1"
                        <?php echo isset($pregunta->requerida) && $pregunta->requerida ? 'checked' : 'checked'; ?>
-                       class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                       class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded m-0">
                 <label for="requerida" class="ml-2 block text-sm text-gray-700">
                     Pregunta obligatoria
                 </label>
@@ -131,14 +131,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function agregarOpcion(texto = '', valor = '') {
         const opcionId = Date.now();
         const opcionHtml = `
-        <div class="flex items-center opcion-item" data-id="${opcionId}">
+        <div class="flex gap-2 items-center opcion-item" data-id="${opcionId}">
             <input type="text" name="opciones[${opcionId}][texto]" 
                    placeholder="Texto de la opción" value="${texto}"
-                   class="flex-1 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" required>
+                   class="flex-1 m-0 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" required>
             <input type="text" name="opciones[${opcionId}][valor]" 
                    placeholder="Valor" value="${valor || texto}"
-                   class="w-1/4 px-3 py-2 border-t border-b border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-            <button type="button" class="eliminar-opcion px-3 py-2 border border-gray-300 rounded-r-md bg-gray-100 hover:bg-gray-200">
+                   class="w-1/4 m-0 px-3 py-2 border-t border-b border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            <button type="button" class="eliminar-opcion px-3 py-2 border border-gray-300 rounded-md bg-gray-100 hover:bg-gray-200">
                 <i class='bx bx-trash text-red-500'></i>
             </button>
         </div>`;

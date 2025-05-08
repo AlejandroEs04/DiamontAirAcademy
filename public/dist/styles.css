@@ -87,10 +87,6 @@ h2 {
     margin: 0;
 }
 
-button {
-    padding: 10px;
-}
-
 .btn {
     font-family: 'Outfit', sans-serif;
     background-color: #3e3280;
@@ -188,7 +184,6 @@ select option:checked {
 table {
     border-collapse: collapse;
     width: 100%;
-    margin-top: 20px;
 }
 
 th {
@@ -523,7 +518,7 @@ body.admin-style {
 }
 
 .clases-eventos {
-    width: 1000px;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -820,4 +815,60 @@ p {
 .button-container.grid .menu-box a button {
     margin-top: 0.5rem;
     width: 100%;
+}
+
+#qr-video {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    margin: 0 auto;
+    border-radius: 8px;
+    border: 2px solid #7c3aed;
+    transform: scaleX(-1); /* Espejo para mejor experiencia */
+    object-fit: cover;
+}
+.scanner-container {
+    position: relative;
+}
+.scan-region {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 200px;
+    border: 4px dashed rgba(124, 58, 237, 0.5);
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.status-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ccc;
+    transition: background 0.3s;
+}
+
+.scan-success {
+    background: #4CAF50;
+    box-shadow: 0 0 10px #4CAF50;
+}
+
+.scan-error {
+    background: #F44336;
+    box-shadow: 0 0 10px #F44336;
+}
+
+#rescan-btn {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }

@@ -81,10 +81,18 @@ class EncuestaController {
     }
 
     public static function listar(Router $router) {
-        $encuestas = Encuesta::whereMany('activa', 1);
+        $todasEncuestas = Encuesta::whereMany('activa', 1);
+        
+        $encuestasPendientes = array_filter($todasEncuestas, function($encuesta) {
+            $respuestas = RespuestaEncuesta::whereManyCondition([
+                'usuario_id' => $_SESSION['id'],
+                'encuesta_id' => $encuesta->id
+            ]);
+            return empty($respuestas);
+        });
         
         $router->render('encuestas/listado', [
-            'encuestas' => $encuestas
+            'encuestas' => array_values($encuestasPendientes)
         ]);
     }
 
@@ -98,14 +106,20 @@ class EncuestaController {
             exit;
         }
         
-        $preguntas = Pregunta::whereMany('encuesta_id', $id);
+        // Obtener preguntas ordenadas
+        $preguntas = Pregunta::whereManyCondition([
+            'encuesta_id' => $id
+        ], 'orden ASC');
         
+        // Cargar opciones para preguntas de opción múltiple
         foreach($preguntas as $pregunta) {
             if($pregunta->tipo_respuesta === 'opcion_multiple') {
-                $pregunta->opciones = OpcionPregunta::whereMany('pregunta_id', $pregunta->id);
+                $pregunta->opciones = OpcionPregunta::whereManyCondition([
+                    'pregunta_id' => $pregunta->id
+                ], 'orden ASC');
             }
         }
-
+    
         $router->render('encuestas/contestar', [
             'encuesta' => $encuesta,
             'preguntas' => $preguntas
@@ -118,7 +132,7 @@ class EncuestaController {
             exit;
         }
         
-        $usuarioId = $_SESSION['usuario_id'] ?? null;
+        $usuarioId = $_SESSION['id'] ?? null;
         if(!$usuarioId) {
             header('Location: /login');
             exit;
@@ -132,7 +146,7 @@ class EncuestaController {
             $existeRespuesta = RespuestaEncuesta::whereManyCondition([
                 'usuario_id' => $usuarioId,
                 'encuesta_id' => $encuestaId
-            ])[0];
+            ]);
             
             if(count($existeRespuesta) > 0) {
                 header('Location: /encuestas?error=ya_respondiste');
@@ -142,6 +156,11 @@ class EncuestaController {
             // Guardar cada respuesta
             foreach($respuestas as $preguntaId => $respuesta) {
                 $pregunta = Pregunta::find($preguntaId);
+
+                if (!$pregunta) {
+                    header("Location: /");
+                    exit;
+                }
                 
                 $dataRespuesta = [
                     'usuario_id' => $usuarioId,
@@ -168,7 +187,7 @@ class EncuestaController {
                 $nuevaRespuesta->guardar();
             }
             
-            header('Location: /encuestas?succe  ss=1');
+            header('Location: /encuestas?success=1');
             exit;
             
         } catch(\Exception $e) {
